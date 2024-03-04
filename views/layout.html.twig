@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/microcms.css') }}" rel="stylesheet">
+    <title> something - {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('home') }}">Something</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-collapse-target">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="{% if adminMenu is defined %}active{% endif %}"><a href="{{ path('admin') }}"><span class="glyphicon glyphicon-cog"></span> Administration</a></li>
+                        {% endif %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span> Welcome, {{ app.user.username }} <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('logout') }}">Log out</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span> Not connected <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('login') }}">Log in</a></li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div><!-- /.container -->
+        </nav>
+<div class="container">
+ <div style="position: absolute;top: 120px; left:70%;right: 5%;" class="fb-page" 
+data-href="https://www.facebook.com/profile.php?id=100069378622415"
+data-width="300" 
+data-hide-cover="false"
+data-show-facepile="false"></div>
+<div class="col-sm-9 style="padding-right: 45px"">
+
+<div class="row "id="content">{% block content %}{% endblock %}
+
+        <section id="main">
+        </section>  
+        
+
+
+
+
+
+
+</div>
+</div>
+<footer>
+
+        <div style="display:none;width: 1%;height: 1%;"><div id="fb-root"></div></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v16.0&appId=593212029292941&autoLogAppEvents=1" nonce="MQKDPVbv"></script>
+       
+    </footer>
+    
+    <!-- jQuery -->
+    <script src="{{ asset('/lib/jquery/jquery.min.js') }}"></script>
+    <!-- JavaScript Boostrap plugin -->
+    <script src="{{ asset('/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+</body>
+
+<footer>
+<div>
+<p>PoweredBY©-Gandalf-2024</p>
+</div>
+</footer>
+
+</html>

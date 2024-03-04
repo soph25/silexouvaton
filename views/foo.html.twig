@@ -1,0 +1,15 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% for article in articles %}
+<article>
+    <div><a class="articleTitle" href="{{ path('article', { 'id': article.id }) }}">{{ article.title }}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  src="{{ asset('/images/glyphicons/png/glyphicons-55-clock.png') }}" alt="Error ghost"/>&nbsp;&nbsp;{{ article.dateAjout|date("d-m-Y H:i:s") }}
+
+</div></br>
+    <p>{{ article.content }}</p>
+    
+</article>
+{% endfor %}
+{% endblock %}
